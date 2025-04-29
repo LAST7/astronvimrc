@@ -78,7 +78,7 @@ return {
                         :with_pair(
                             cond.not_after_regex "%%"
                         )
-                        -- don't add a pair if  the previous character is xxx
+                        -- don't add a pair if the previous character is xxx
                         :with_pair(
                             cond.not_before_regex("xxx", 3)
                         )
