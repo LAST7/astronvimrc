@@ -101,6 +101,17 @@ core_mappings.n["<Leader>w"] = {
     desc = "format the buffer with null-ls formatter",
 }
 
+-- to-do comments
+core_mappings.n["[t"] = {
+    function() require("todo-comments").jump_prev() end,
+    desc = "previous todo comment",
+}
+
+core_mappings.n["]t"] = {
+    function() require("todo-comments").jump_next() end,
+    desc = "next todo comment",
+}
+
 for _, mode in pairs { "n", "i", "t" } do
     core_mappings[mode]["<C-'>"] = false
     core_mappings[mode]["<C-\\>"] = { "<Cmd>ToggleTerm direction=float<CR>", desc = "Toggle terminal" } -- requires terminal that supports binding <C-'>
@@ -139,17 +150,6 @@ lsp_mappings.n["]d"] = {
 lsp_mappings.n["<Leader>ull"] = {
     "<cmd>Lspsaga outline<cr>",
     desc = "show outline",
-}
-
--- to-do comments
-lsp_mappings.n["[t"] = {
-    function() require("todo-comments").jump_prev() end,
-    desc = "previous todo comment",
-}
-
-lsp_mappings.n["]t"] = {
-    function() require("todo-comments").jump_next() end,
-    desc = "next todo comment",
 }
 
 return {

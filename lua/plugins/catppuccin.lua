@@ -27,13 +27,9 @@ local highlight_groups = function(C)
         NeoTreeTabActive = { link = "CursorLine" },
         NeoTreeTabSeparatorInactive = { link = "Pmenu" },
         NeoTreeTabSeparatorActive = { link = "CursorLine" },
-        -- indent-blankline
-        -- TODO: not working
-        IblIndent = { fg = C.overlay0 },
-        IblScope = { fg = C.blue },
-        -- null-ls
-        -- TODO: not working
-        NullLsInfoBorder = { link = "FloatBorder" },
+        -- snacks.indent
+        SnacksIndent = { fg = C.overlay0 },
+        SnacksIndentScope = { fg = C.blue },
     }
 end
 
