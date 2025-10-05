@@ -13,33 +13,27 @@ return {
     { import = "astrocommunity.pack.typescript" },
     -- { import = "astrocommunity.pack.tailwindcss" },
     { import = "astrocommunity.pack.python" },
-    { import = "astrocommunity.pack.rust" },
-    -- diagnostic
+    -- { import = "astrocommunity.pack.rust" },
+
+    -- lsp utils
     { import = "astrocommunity.diagnostics.trouble-nvim" },
-
-    { import = "astrocommunity.bars-and-lines.scope-nvim" },
-    { import = "astrocommunity.bars-and-lines.bufferline-nvim" },
-
-    -- lspsaga
     { import = "astrocommunity.lsp.lspsaga-nvim" },
-
-    -- flash
-    { import = "astrocommunity.motion.flash-nvim" },
-
-    -- markdown preview
-    { import = "astrocommunity.markdown-and-latex.markdown-preview-nvim" },
-
-    -- undotree
-    { import = "astrocommunity.editing-support.undotree" },
-
-    -- code snap
-    { import = "astrocommunity.media.codesnap-nvim" },
 
     -- appearance
     { import = "astrocommunity.bars-and-lines.lualine-nvim" },
     { import = "astrocommunity.colorscheme.catppuccin" },
 
-    -- utility
+    -- utils
     { import = "astrocommunity.motion.nvim-surround" },
     { import = "astrocommunity.motion.tabout-nvim" },
+    { import = "astrocommunity.bars-and-lines.scope-nvim" },
+    { import = "astrocommunity.bars-and-lines.bufferline-nvim" },
+    { import = "astrocommunity.editing-support.undotree" },
+    { import = "astrocommunity.motion.flash-nvim" },
+
+    -- markdown preview
+    { import = "astrocommunity.markdown-and-latex.markdown-preview-nvim" },
+
+    -- code snap
+    { import = "astrocommunity.media.codesnap-nvim" },
 }

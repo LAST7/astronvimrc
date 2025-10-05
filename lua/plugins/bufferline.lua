@@ -41,9 +41,9 @@ return {
 
                 themable = true,
             },
-            highlights = require("catppuccin.groups.integrations.bufferline").get {
+            highlights = require("catppuccin.special.bufferline").get_theme {
                 styles = {
-                    -- "italic",
+                    "italic",
                     "bold",
                 },
             },
