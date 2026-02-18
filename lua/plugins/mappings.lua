@@ -86,19 +86,55 @@ core_mappings.n["<Leader>e"] = {
 }
 
 core_mappings.n["<Leader>o"] = {
-    "<cmd>Neotree toggle float<cr>",
+    -- keyword `reveal` is needed here as the plugin wouldn't do so by default
+    -- for reasons that IDK.
+    "<cmd>Neotree toggle float reveal<cr>",
     desc = "toggle floating neo-tree file explorer",
 }
 
 -- format
 core_mappings.n["<Leader>w"] = {
+    function() require("conform").format { async = true } end,
+    desc = "Format buffer",
+}
+
+-- visual range format
+core_mappings.v["<Leader>w"] = {
     function()
-        --[[ vim.lsp.buf.format {
-            filter = function(client) return client.name == "null-ls" end,
-        } ]]
-        vim.lsp.buf.format()
+        local s = vim.fn.getpos("'<")
+        local e = vim.fn.getpos("'>")
+        local end_line = vim.api.nvim_buf_get_lines(0, e[2] - 1, e[2], true)[1] or ""
+        require("conform").format {
+            async = true,
+            range = { start = { s[2], 0 }, ["end"] = { e[2], #end_line } },
+        }
     end,
-    desc = "format the buffer with null-ls formatter",
+    desc = "Format selection",
+}
+
+core_mappings.n["<Leader>ci"] = {
+    function() vim.cmd.ConformInfo() end,
+    desc = "Conform information",
+}
+
+core_mappings.n["<Leader>uf"] = {
+    function()
+        vim.b.autoformat = not vim.F.if_nil(vim.b.autoformat, vim.g.autoformat, true)
+        require("astrocore").notify(
+            string.format("Buffer autoformatting %s", vim.b.autoformat and "on" or "off")
+        )
+    end,
+    desc = "Toggle autoformatting (buffer)",
+}
+
+core_mappings.n["<Leader>uF"] = {
+    function()
+        vim.g.autoformat, vim.b.autoformat = not vim.F.if_nil(vim.g.autoformat, true), nil
+        require("astrocore").notify(
+            string.format("Global autoformatting %s", vim.g.autoformat and "on" or "off")
+        )
+    end,
+    desc = "Toggle autoformatting (global)",
 }
 
 -- to-do comments
@@ -134,6 +170,8 @@ lsp_mappings.n["gd"] = {
 lsp_mappings.n["gD"] = {
     "<cmd>Lspsaga goto_definition<cr>",
     desc = "go to definition",
+    -- bypass astrolsp's mapping filter
+    cond = function() return true end,
 }
 lsp_mappings.n["K"] = {
     "<cmd>Lspsaga hover_doc<cr>",
@@ -147,7 +185,7 @@ lsp_mappings.n["]d"] = {
     "<cmd>Lspsaga diagnostic_jump_next<cr>",
     desc = "jump to next diagnostic in buffer",
 }
-lsp_mappings.n["<Leader>ull"] = {
+lsp_mappings.n["<Leader>sl"] = {
     "<cmd>Lspsaga outline<cr>",
     desc = "show outline",
 }
