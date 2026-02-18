@@ -29,6 +29,7 @@ local custom_opts = {
     splitbelow = true,
 
     fileencoding = "UTF-8",
+    -- fileencodings = "UTF-8,gbk,latin1",
 
     -- remain lines around cursor
     scrolloff = 8,
@@ -50,7 +51,7 @@ local custom_opts = {
     timeoutlen = 300,
 
     -- for avante
-    laststatus = 3,
+    -- laststatus = 3,
 }
 
 ---@type LazySpec
@@ -63,7 +64,7 @@ return {
             large_buf = { size = 1024 * 256, lines = 10000 }, -- set global limits for large files for disabling features like treesitter
             autopairs = true, -- enable autopairs at start
             cmp = true, -- enable completion at start
-            diagnostics = { virtual_text = false, virtual_lines = true }, -- diagnostic settings on startup
+            diagnostics = { virtual_text = true, virtual_lines = false }, -- diagnostic settings on startup
             highlighturl = true, -- highlight URLs at start
             notifications = true, -- enable notifications at start
         },
@@ -75,19 +76,19 @@ return {
         -- passed to `vim.filetype.add`
         filetypes = {
             -- see `:h vim.filetype.add` for usage
-            extension = {
-                foo = "fooscript",
-            },
-            filename = {
-                [".foorc"] = "fooscript",
-            },
-            pattern = {
-                [".*/etc/foo/.*"] = "fooscript",
-            },
+            -- extension = {
+            --     foo = "fooscript",
+            -- },
+            -- filename = {
+            --     [".foorc"] = "fooscript",
+            -- },
+            -- pattern = {
+            --     [".*/etc/foo/.*"] = "fooscript",
+            -- },
         },
         -- vim options can be configured here
         options = {
-            opt = custom_opts,
+            opt = custom_opts, -- see above
             g = { -- vim.g.<key>
                 -- configure global vim variables (vim.g)
                 -- NOTE: `mapleader` and `maplocalleader` must be set in the AstroNvim opts or before `lazy.setup`

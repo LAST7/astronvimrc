@@ -13,15 +13,6 @@ local side_window = {
     },
 }
 
-local cursor_color = vim.api.nvim_get_hl(0, { name = "Cursor" }).bg
-local cursor_bg = "#000000"
-
-if cursor_color then
-    cursor_bg = string.format("#%06x", cursor_color)
-else
-    print "Cursor guibg color not found. See config file 'neo-tree.lua'"
-end
-
 local config = {
     close_if_last_window = true,
     popup_border_style = "rounded",
@@ -33,6 +24,7 @@ local config = {
         enabled = true,
         leave_dirs_open = false,
     },
+    enable_git_status = false,
 
     -- set the float window to the right side
     filesystem = {
@@ -42,17 +34,16 @@ local config = {
         window = side_window,
     },
     git_status = {
-        window = side_window,
+        window = nil,
     },
 
     window = {
         width = 30,
 
         mappings = {
-            -- switch between filesystem, buffers and git_status
+            -- switch between filesystem and buffers
             ["e"] = function() vim.cmd("Neotree focus filesystem current", true) end,
             ["b"] = function() vim.cmd("Neotree focus buffers current", true) end,
-            ["g"] = function() vim.cmd("Neotree focus git_status current", true) end,
         },
     },
 
