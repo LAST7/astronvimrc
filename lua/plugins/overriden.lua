@@ -99,6 +99,8 @@ return {
     },
     {
         "mistricky/codesnap.nvim",
+    -- FIXME: outdated
+        version = "v1.6.3",
         opts = {
             has_breadcrumbs = true,
             show_workspace = true,
