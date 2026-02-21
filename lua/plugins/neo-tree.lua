@@ -13,6 +13,8 @@ local side_window = {
     },
 }
 
+local default_guicursor = vim.opt.guicursor:get()
+
 local config = {
     close_if_last_window = true,
     popup_border_style = "rounded",
@@ -52,31 +54,14 @@ local config = {
         {
             event = "neo_tree_buffer_enter",
             handler = function()
-                -- Get current highlight namespace
-                local ns = vim.api.nvim_get_hl_ns {}
-
-                -- Get the current Cursor highlight
-                local cursor_hl = vim.api.nvim_get_hl(ns, { name = "Cursor" })
-
-                -- Modify the Cursor highlight to be transparent
-                cursor_hl.blend = 100
-                vim.api.nvim_set_hl(ns, "Cursor", cursor_hl)
-                vim.opt.guicursor:append "a:Cursor/lCursor"
+                vim.opt.guicursor:append "a:CursorHidden"
+                vim.api.nvim_set_hl(0, "CursorHidden", { reverse = true, blend = 100, nocombine = true })
+                vim.cmd "redraw"
             end,
         },
         {
             event = "neo_tree_buffer_leave",
-            handler = function()
-                local ns = vim.api.nvim_get_hl_ns {}
-
-                -- Get the current Cursor highlight
-                local cursor_hl = vim.api.nvim_get_hl(ns, { name = "Cursor" })
-
-                -- Modify the Cursor highlight to be transparent
-                cursor_hl.blend = 0
-                vim.api.nvim_set_hl(ns, "Cursor", cursor_hl)
-                vim.opt.guicursor:append "a:Cursor/lCursor"
-            end,
+            handler = function() vim.opt.guicursor = default_guicursor end,
         },
     },
 }
