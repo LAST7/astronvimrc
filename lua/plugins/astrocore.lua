@@ -49,6 +49,8 @@ local custom_opts = {
     fileencoding = "UTF-8",
     -- fileencodings = "UTF-8,gbk,latin1",
 
+    undofile = true,
+
     -- remain lines around cursor
     scrolloff = 8,
     sidescrolloff = 8,
