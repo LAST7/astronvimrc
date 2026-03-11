@@ -9,17 +9,23 @@ return {
             keymap = {
                 -- ["<C-Space>"] = { "show", "show_documentation", "hide_documentation" },
                 ["<C-K>"] = { "show", "show_documentation", "hide_documentation" },
-                ["<A-e>"] = { "hide", "fallback" },
+                ["<A-e>"] = { "cancel" },
                 ["<Tab>"] = {
-                    "select_next",
-                    "snippet_forward",
-                    function()
-                        vim.schedule(function() vim.snippet.jump(1) end)
+                    function(cmp)
+                        if cmp.is_visible() then return cmp.select_next() end
+
+                        if cmp.snippet_active() then return cmp.snippet_forward() end
                     end,
                     "fallback",
                 },
             },
             completion = {
+                list = {
+                    selection = {
+                        preselect = false,
+                        auto_insert = true,
+                    },
+                },
                 menu = {
                     winhighlight = "Normal:BlinkCmpMenu,FloatBorder:BlinkCmpMenuBorder,CursorLine:BlinkCmpMenuSelection,Search:None",
                 },
@@ -28,6 +34,18 @@ return {
                         winhighlight = "Normal:BlinkCmpDoc,FloatBorder:BlinkCmpDocBorder,EndOfBuffer:BlinkCmpDoc",
                     },
                 },
+            },
+            snippets = {
+                active = function(filter)
+                    local snippet = require "luasnip"
+                    local blink = require "blink.cmp"
+                    if snippet.in_snippet() and not blink.is_visible() then
+                        return true
+                    else
+                        if not snippet.in_snippet() and vim.fn.mode() == "n" then snippet.unlink_current() end
+                        return false
+                    end
+                end,
             },
             signature = {
                 enabled = false,
@@ -99,7 +117,7 @@ return {
     },
     {
         "mistricky/codesnap.nvim",
-    -- FIXME: outdated
+        -- FIXME: outdated
         version = "v1.6.3",
         opts = {
             has_breadcrumbs = true,

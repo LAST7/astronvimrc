@@ -20,7 +20,6 @@ return {
     {
         "folke/snacks.nvim",
         opts = {
-            -- TODO: hide cursor
             dashboard = {
                 preset = {
                     header = table.concat({
