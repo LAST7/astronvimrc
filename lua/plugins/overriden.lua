@@ -8,15 +8,45 @@ return {
         opts = {
             keymap = {
                 -- ["<C-Space>"] = { "show", "show_documentation", "hide_documentation" },
-                ["<C-K>"] = { "show", "show_documentation", "hide_documentation" },
+                ["<C-k>"] = { "show", "show_documentation", "hide_documentation" },
+                ["<A-o>"] = { "show" },
                 ["<A-e>"] = { "cancel" },
-                ["<Tab>"] = {
+                ["<A-l>"] = {
                     function(cmp)
-                        if cmp.is_visible() then return cmp.select_next() end
-
                         if cmp.snippet_active() then return cmp.snippet_forward() end
                     end,
                     "fallback",
+                },
+                ["<Tab>"] = {
+                    function(cmp)
+                        if cmp.is_visible() then return cmp.select_next() end
+                    end,
+                    "fallback",
+                },
+            },
+            sources = {
+                providers = {
+                    lsp = {
+                        -- disable snippets from lsp
+                        transform_items = function(_, items)
+                            return vim.tbl_filter(
+                                function(item) return item.kind ~= vim.lsp.protocol.CompletionItemKind.Snippet end,
+                                items
+                            )
+                        end,
+                    },
+                    snippets = {
+                        -- for comment snippets triggerred by "/*"
+                        override = {
+                            get_trigger_characters = function(_) return { "*" } end,
+                        },
+                    },
+                },
+                default = {
+                    "lsp",
+                    "path",
+                    "snippets",
+                    "buffer",
                 },
             },
             completion = {
@@ -36,6 +66,7 @@ return {
                 },
             },
             snippets = {
+                preset = "luasnip",
                 active = function(filter)
                     local snippet = require "luasnip"
                     local blink = require "blink.cmp"
