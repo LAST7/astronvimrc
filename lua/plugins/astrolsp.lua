@@ -31,6 +31,7 @@ return {
                 -- "lua_ls",
                 "vtsls",
                 "typescript-language-server",
+                "clangd",
             },
             timeout_ms = 1000, -- default format timeout
             -- filter = function(client) -- fully override the default formatting function

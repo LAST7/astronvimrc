@@ -28,9 +28,10 @@ local custom_opts = {
     signcolumn = "yes",
     wrap = true,
     -- indentation
-    tabstop = 4,
-    shiftwidth = 4,
     expandtab = true,
+    tabstop = 4,
+    softtabstop = 4,
+    shiftwidth = 4,
     smarttab = true,
     autoindent = true,
     -- search
@@ -48,6 +49,7 @@ local custom_opts = {
 
     fileencoding = "UTF-8",
     -- fileencodings = "UTF-8,gbk,latin1",
+    syntax = "off",
 
     undofile = true,
 
