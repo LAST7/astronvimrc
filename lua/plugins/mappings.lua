@@ -44,10 +44,6 @@ core_mappings.n["<Leader>sx"] = {
     desc = "close current split window",
 }
 
--- tabs
-core_mappings.n["<Leader>C"] = false
-core_mappings.n["<Leader>c"] = false
-
 core_mappings.n["<A-h>"] = {
     "<cmd>BufferLineCyclePrev<cr>",
     desc = "nevigate to prev buffer",
@@ -101,8 +97,8 @@ core_mappings.n["<Leader>w"] = {
 -- visual range format
 core_mappings.v["<Leader>w"] = {
     function()
-        local s = vim.fn.getpos("'<")
-        local e = vim.fn.getpos("'>")
+        local s = vim.fn.getpos "'<"
+        local e = vim.fn.getpos "'>"
         local end_line = vim.api.nvim_buf_get_lines(0, e[2] - 1, e[2], true)[1] or ""
         require("conform").format {
             async = true,
@@ -120,9 +116,7 @@ core_mappings.n["<Leader>ci"] = {
 core_mappings.n["<Leader>uf"] = {
     function()
         vim.b.autoformat = not vim.F.if_nil(vim.b.autoformat, vim.g.autoformat, true)
-        require("astrocore").notify(
-            string.format("Buffer autoformatting %s", vim.b.autoformat and "on" or "off")
-        )
+        require("astrocore").notify(string.format("Buffer autoformatting %s", vim.b.autoformat and "on" or "off"))
     end,
     desc = "Toggle autoformatting (buffer)",
 }
@@ -130,9 +124,7 @@ core_mappings.n["<Leader>uf"] = {
 core_mappings.n["<Leader>uF"] = {
     function()
         vim.g.autoformat, vim.b.autoformat = not vim.F.if_nil(vim.g.autoformat, true), nil
-        require("astrocore").notify(
-            string.format("Global autoformatting %s", vim.g.autoformat and "on" or "off")
-        )
+        require("astrocore").notify(string.format("Global autoformatting %s", vim.g.autoformat and "on" or "off"))
     end,
     desc = "Toggle autoformatting (global)",
 }
@@ -152,6 +144,12 @@ for _, mode in pairs { "n", "i", "t" } do
     core_mappings[mode]["<C-'>"] = false
     core_mappings[mode]["<C-\\>"] = { "<Cmd>ToggleTerm direction=float<CR>", desc = "Toggle terminal" } -- requires terminal that supports binding <C-'>
 end
+
+-- disable mappings
+
+-- tabs
+core_mappings.n["<Leader>C"] = false
+core_mappings.n["<Leader>c"] = false
 
 ----------
 -- LSP Mappings

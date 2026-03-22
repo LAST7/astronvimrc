@@ -1,3 +1,4 @@
+-- delete selection keymap
 local global_s_maps = vim.api.nvim_get_keymap "s"
 for _, map in ipairs(global_s_maps) do
     pcall(vim.keymap.del, "s", map.lhs)
