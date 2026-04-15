@@ -1,9 +1,8 @@
----@type LazySpec
 return {
     {
-        "Saghen/blink.cmp",
+        "saghen/blink.cmp",
         dependencies = {
-            "echasnovski/mini.icons",
+            "nvim-mini/mini.icons",
         },
         opts = {
             keymap = {
@@ -37,9 +36,9 @@ return {
                     },
                     snippets = {
                         -- for comment snippets triggerred by "/*"
-                        override = {
-                            get_trigger_characters = function(_) return { "*" } end,
-                        },
+                        -- override = {
+                        --     get_trigger_characters = function(_) return { "*" } end,
+                        -- },
                     },
                 },
                 default = {

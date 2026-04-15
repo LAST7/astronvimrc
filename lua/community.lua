@@ -19,6 +19,7 @@ return {
     { import = "astrocommunity.diagnostics.trouble-nvim" },
     { import = "astrocommunity.lsp.lspsaga-nvim" },
     { import = "astrocommunity.lsp.inc-rename-nvim" },
+    { import = "astrocommunity.recipes.astrolsp-no-insert-inlay-hints" },
 
     -- appearance
     { import = "astrocommunity.bars-and-lines.lualine-nvim" },

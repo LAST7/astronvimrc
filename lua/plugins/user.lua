@@ -1,20 +1,13 @@
 -- You can also add or configure plugins by creating files in this `plugins/` folder
--- PLEASE REMOVE THE EXAMPLES YOU HAVE NO INTEREST IN BEFORE ENABLING THIS FILE
--- Here are some examples:
 
 ---@type LazySpec
 return {
-
-    -- == Examples of Adding Plugins ==
-
-    "andweeb/presence.nvim",
+    -- "andweeb/presence.nvim",
     {
         "ray-x/lsp_signature.nvim",
         event = "BufRead",
         config = function() require("lsp_signature").setup() end,
     },
-
-    -- == Examples of Overriding Plugins ==
 
     -- customize dashboard options
     {
@@ -47,9 +40,6 @@ return {
             },
         },
     },
-
-    -- You can disable default plugins as follows:
-    -- { "max397574/better-escape.nvim", enabled = false },
 
     -- You can also easily customize additional setup of plugins that is outside of the plugin's setup call
     {

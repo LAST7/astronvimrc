@@ -1,10 +1,8 @@
 -- AstroCore provides a central place to modify mappings, vim options, autocommands, and more!
 -- Configuration documentation can be found with `:h astrocore`
--- NOTE: We highly recommend setting up the Lua Language Server (`:LspInstall lua_ls`)
---       as this provides autocomplete and documentation while editing
 
-local default_guicursor = vim.opt.guicursor:get()
 -- Set cursor to be transparent in dashboard
+local default_guicursor = vim.opt.guicursor:get()
 vim.api.nvim_create_autocmd("User", {
     pattern = "SnacksDashboardOpened",
     desc = "Set cursor to be transparent in dashboard",
