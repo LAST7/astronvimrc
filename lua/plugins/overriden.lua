@@ -4,6 +4,7 @@ return {
         dependencies = {
             "nvim-mini/mini.icons",
         },
+        build = "cargo build --release",
         opts = {
             keymap = {
                 -- ["<C-Space>"] = { "show", "show_documentation", "hide_documentation" },

@@ -9,7 +9,7 @@ return {
     -- import/override with your plugins folder
     { import = "astrocommunity.pack.cpp" },
     -- { import = "astrocommunity.pack.markdown" },
-    -- { import = "astrocommunity.pack.typescript" },
+    { import = "astrocommunity.pack.typescript" },
     { import = "astrocommunity.pack.tailwindcss" },
     { import = "astrocommunity.pack.svelte" },
     { import = "astrocommunity.pack.python" },
@@ -20,6 +20,8 @@ return {
     { import = "astrocommunity.lsp.lspsaga-nvim" },
     { import = "astrocommunity.lsp.inc-rename-nvim" },
     { import = "astrocommunity.recipes.astrolsp-no-insert-inlay-hints" },
+
+    { import = "astrocommunity.editing-support.nvim-treesitter-context" },
 
     -- appearance
     { import = "astrocommunity.bars-and-lines.lualine-nvim" },
@@ -35,7 +37,8 @@ return {
     { import = "astrocommunity.motion.flash-nvim" },
 
     -- markdown preview
-    { import = "astrocommunity.markdown-and-latex.markdown-preview-nvim" },
+    -- { import = "astrocommunity.markdown-and-latex.markdown-preview-nvim" },
+    { import = "astrocommunity.markdown-and-latex.peek-nvim" },
 
     -- code snap
     { import = "astrocommunity.media.codesnap-nvim" },
