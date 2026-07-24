@@ -96,10 +96,6 @@ return {
         },
     },
     {
-        "MunifTanjim/nui.nvim",
-        version = "8d5b0b5",
-    },
-    {
         "folke/noice.nvim",
         opts = {
             -- display the cmdline and popupmenu together
