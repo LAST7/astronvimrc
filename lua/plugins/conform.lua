@@ -43,9 +43,9 @@ return {
             stylua = {
                 prepend_args = { "--indent-type", "Spaces", "--indent-width", "4" },
             },
-            prettierd = {
-                prepend_args = { "--tab-width", "4", "--use-tabs", "false" },
-            },
+            -- prettierd = {
+            --     prepend_args = { "--tab-width", "4", "--use-tabs", "false" },
+            -- },
         },
     },
 }

@@ -15,13 +15,14 @@ return {
     { import = "astrocommunity.pack.python" },
     -- { import = "astrocommunity.pack.rust" },
 
-    -- lsp utils
+    -- lsp
     { import = "astrocommunity.diagnostics.trouble-nvim" },
     { import = "astrocommunity.lsp.lspsaga-nvim" },
     { import = "astrocommunity.lsp.inc-rename-nvim" },
     { import = "astrocommunity.recipes.astrolsp-no-insert-inlay-hints" },
 
     { import = "astrocommunity.editing-support.nvim-treesitter-context" },
+    { import = "astrocommunity.editing-support.yanky-nvim" },
 
     -- appearance
     { import = "astrocommunity.bars-and-lines.lualine-nvim" },
