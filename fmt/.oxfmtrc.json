@@ -1,0 +1,10 @@
+{
+    "$schema": "https://raw.githubusercontent.com/oxc-project/oxc/main/npm/oxfmt/configuration_schema.json",
+    "useTabs": false,
+    "tabWidth": 4,
+    "trailingComma": "none",
+    "printWidth": 100,
+    "sortPackageJson": false,
+    "sortTailwindcss": true,
+    "svelte": true
+}

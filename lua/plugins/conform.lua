@@ -27,21 +27,25 @@ return {
             cpp = { "clang-format" },
             lua = { "stylua" },
             python = { "black", "isort" },
-            javascript = { "prettierd" },
-            typescript = { "prettierd" },
-            javascriptreact = { "prettierd" },
-            typescriptreact = { "prettierd" },
-            json = { "prettierd" },
-            jsonc = { "prettierd" },
-            yaml = { "prettierd" },
-            markdown = { "prettierd" },
-            html = { "prettierd" },
-            css = { "prettierd" },
+            javascript = { "oxfmt" },
+            typescript = { "oxfmt" },
+            javascriptreact = { "oxfmt" },
+            typescriptreact = { "oxfmt" },
+            svelte = { "oxfmt", lsp_format = "never" },
+            json = { "oxfmt" },
+            jsonc = { "oxfmt" },
+            yaml = { "oxfmt" },
+            markdown = { "oxfmt" },
+            html = { "oxfmt" },
+            css = { "oxfmt" },
+            sql = { "sql_formatter" },
         },
-        -- Force 4-space indentation and avoid tabs where supported
         formatters = {
-            stylua = {
+            ["stylua"] = {
                 prepend_args = { "--indent-type", "Spaces", "--indent-width", "4" },
+            },
+            ["oxfmt"] = {
+                prepend_args = { "-c", vim.fn.expand "~/.config/nvim/fmt/.oxfmtrc.json" },
             },
             -- prettierd = {
             --     prepend_args = { "--tab-width", "4", "--use-tabs", "false" },
